@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Um Amor Puro</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ff5b9d">
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle, #ffe6f0, #fbd3e9);
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+.container {
+  position: relative;
+  width: 80vmin;
+  height: 80vmin;
+  cursor: pointer;
+}
+svg { width:100%; height:100%; }
+text {
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  fill: #ff2d75;
+}
+.foto {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 45%;
+  height: 45%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  object-fit: cover;
+  border: 4px solid white;
+  box-shadow: 0 15px 35px rgba(0,0,0,.3);
+}
+.tap {
+  position: fixed;
+  bottom: 12px;
+  width: 100%;
+  text-align: center;
+  color: #a84b7a;
+}
+</style>
+</head>
+<body>
+
+<audio id="music" src="djavan.mp3"></audio>
+
+<div class="container" id="heart">
+  <img src="casal.jpg" class="foto">
+  <svg viewBox="0 0 500 500">
+    <defs>
+      <path id="heartPath"
+        d="M250 420
+           C 120 300, 80 200, 160 140
+           C 210 100, 250 140, 250 180
+           C 250 140, 290 100, 340 140
+           C 420 200, 380 300, 250 420"/>
+    </defs>
+    <text>
+      <textPath id="loopText" href="#heartPath">
+        EU TE AMO • UM AMOR PURO • EU TE AMO • UM AMOR PURO •
+      </textPath>
+    </text>
+  </svg>
+</div>
+
+<div class="tap">Toque no coração ❤️</div>
+
+<script>
+let offset = 0;
+const textPath = document.getElementById("loopText");
+function animate(){
+  offset += 0.05;
+  if(offset >= 100) offset = 0;
+  textPath.setAttribute("startOffset", offset + "%");
+  requestAnimationFrame(animate);
+}
+animate();
+
+let tocou = false;
+document.getElementById("heart").addEventListener("click", () => {
+  if(!tocou){
+    document.getElementById("music").play();
+    tocou = true;
+  }
+});
+</script>
+</body>
+</html>
