@@ -1,0 +1,10 @@
+
+{
+  "name": "Um Amor Puro",
+  "short_name": "Um Amor Puro",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffe6f0",
+  "theme_color": "#ff5b9d",
+  "icons": []
+}
